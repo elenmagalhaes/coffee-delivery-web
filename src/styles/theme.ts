@@ -30,12 +30,5 @@ export const theme = {
       bold: '700',
       'extra-bold': '800',
     },
-    size: {
-      xs: '0.5rem',
-      sm: '0.75rem',
-      md: '1rem',
-      lg: '1.25rem',
-      xl: '2rem',
-    },
   },
 }
