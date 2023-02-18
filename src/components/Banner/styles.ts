@@ -27,12 +27,12 @@ export const Paragraph = styled.p`
   color: ${(props) => props.theme.color['gray-800']};
 `
 
-export const BannerSection = styled.div`
+export const BannerSection = styled.section`
   background-image: url(${backgroundImage});
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5.2rem 10rem;
+  padding: 5.75rem 10rem;
 `
 
 export const BannerInfo = styled.div`
