@@ -8,7 +8,9 @@ import { theme } from '../../styles/theme'
 export const Header = () => {
   return (
     <HeaderContainer>
-      <img src={logo} alt="Logotipo do Coffee Delivery" />
+      <NavLink to="/">
+        <img src={logo} alt="Logotipo do Coffee Delivery" />
+      </NavLink>
       <HeaderInfo>
         <LocationTag>
           <MapPin size={22} weight="fill" color={theme.color['purple-900']} />

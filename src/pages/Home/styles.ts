@@ -106,14 +106,29 @@ export const CardFooter = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.25rem;
-    padding: 0.75rem 0.5rem;
+    /* gap: 0.25rem; */
+
     border-radius: 6px;
     background: ${(props) => props.theme.color['gray-300']};
     color: ${(props) => props.theme.color['gray-900']};
 
-    svg {
+    .decrease-content {
       cursor: pointer;
+      padding: 0.75rem 0.25rem 0.75rem 0.5rem;
+    }
+
+    .increase-content {
+      cursor: pointer;
+      padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+    }
+
+    span {
+      width: 1.25rem;
+      text-align: center;
+    }
+
+    svg {
+      display: flex;
     }
   }
 
