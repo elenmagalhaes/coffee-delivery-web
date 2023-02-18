@@ -1,73 +1,83 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Tag } from '../../components/Tag'
 import {
   CatalogContainer,
-  FilterList,
   CatalogHeader,
-  FilterItem,
   CatalogList,
   CoffeeCard,
   TagContainer,
-  CoffeTitle,
-  CoffeDescription,
-  PriceContainer,
-  BuyContainer,
-  Price,
-  QuantityCounter,
+  CardFooter,
 } from './styles'
-import CoffeeTraditional from '../../assets/img/coffee-tradicional.svg'
 import { theme } from '../../styles/theme'
+import { PRODUCTS_CATALOG, FILTER_LIST_ITEMS } from '../../constants'
+import { Banner } from '../../components/Banner'
 
 export const Home = () => {
+  const handleDecreaseAmount = () => console.log('diminui quantidade')
+  const handleIncreaseAmount = () => console.log('aumenta quantidade')
   return (
-    <CatalogContainer>
-      <CatalogHeader>
-        <h2>Nossos cafés</h2>
-        <FilterList>
-          <FilterItem>tradicional</FilterItem>
-          <FilterItem>especial</FilterItem>
-          <FilterItem>com leite</FilterItem>
-          <FilterItem>alcoólico</FilterItem>
-          <FilterItem>gelado</FilterItem>
-        </FilterList>
-      </CatalogHeader>
-      <CatalogList className="catalog-list">
-        <CoffeeCard className="product-item">
-          <img src={CoffeeTraditional} alt="" />
-          <TagContainer>
-            <FilterItem>tradicional</FilterItem>
-            <FilterItem>expresso</FilterItem>
-          </TagContainer>
-          <CoffeTitle>Expresso tradicional</CoffeTitle>
-          <CoffeDescription>
-            O tradicional café feito com água quente e grãos moídos
-          </CoffeDescription>
-          <PriceContainer>
-            <Price>
-              <span>R$</span>
-              <div>9,90</div>
-            </Price>
-            <BuyContainer className="quantity">
-              <QuantityCounter>
-                <Minus
-                  size={16}
-                  weight="fill"
-                  color={theme.color['purple-500']}
-                />
-                1
-                <Plus
-                  size={16}
-                  weight="fill"
-                  color={theme.color['purple-500']}
-                />
-              </QuantityCounter>
-              <NavLink to="/checkout">
-                <ShoppingCart size={22} weight="fill" color="white" />
-              </NavLink>
-            </BuyContainer>
-          </PriceContainer>
-        </CoffeeCard>
-      </CatalogList>
-    </CatalogContainer>
+    <>
+      <Banner />
+      <CatalogContainer>
+        <CatalogHeader>
+          <h2>Nossos cafés</h2>
+          <div className="filter-list">
+            {FILTER_LIST_ITEMS.map((item) => {
+              return <Tag key={item} value={item} />
+            })}
+          </div>
+        </CatalogHeader>
+        <CatalogList>
+          {PRODUCTS_CATALOG.map((product) => {
+            return (
+              <CoffeeCard key={product.id} className="product-item">
+                <img src={product.image} alt="" />
+                <TagContainer>
+                  {product.tags &&
+                    product.tags.map((tag: string) => {
+                      return (
+                        <Tag
+                          key={tag}
+                          value={tag}
+                          backgroundColor={theme.color['yellow-100']}
+                        />
+                      )
+                    })}
+                </TagContainer>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <CardFooter>
+                  <div className="price-container">
+                    <span>R$</span>
+                    <div>{product.price}</div>
+                  </div>
+                  <div className="buy-container">
+                    <div className="counter-container">
+                      <Minus
+                        size={16}
+                        weight="fill"
+                        color={theme.color['purple-500']}
+                        onClick={handleDecreaseAmount}
+                      />
+                      1
+                      <Plus
+                        size={16}
+                        weight="fill"
+                        color={theme.color['purple-500']}
+                        onClick={handleIncreaseAmount}
+                      />
+                    </div>
+                    <NavLink to="/checkout">
+                      <ShoppingCart size={22} weight="fill" color="white" />
+                    </NavLink>
+                  </div>
+                </CardFooter>
+              </CoffeeCard>
+            )
+          })}
+        </CatalogList>
+      </CatalogContainer>
+    </>
   )
 }

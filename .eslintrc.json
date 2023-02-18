@@ -20,10 +20,6 @@
             }
           ],
           "pathGroupsExcludedImportTypes": ["react"],
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
         }
       ]
     }
