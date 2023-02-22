@@ -1,4 +1,4 @@
-import { BENEFITS_LIST } from './constants'
+import { BENEFITS_LIST } from '../../constants'
 import {
   BannerSection,
   BannerInfo,

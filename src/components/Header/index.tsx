@@ -8,7 +8,7 @@ import { theme } from '../../styles/theme'
 export const Header = () => {
   return (
     <HeaderContainer>
-      <NavLink to="/">
+      <NavLink to="/" title="Início">
         <img src={logo} alt="Logotipo do Coffee Delivery" />
       </NavLink>
       <HeaderInfo>
@@ -16,7 +16,7 @@ export const Header = () => {
           <MapPin size={22} weight="fill" color={theme.color['purple-900']} />
           <span>São Paulo, SP</span>
         </LocationTag>
-        <NavLink to="/checkout">
+        <NavLink to="/checkout" title="Carrinho de compras">
           <ShoppingCart
             size={22}
             weight="fill"

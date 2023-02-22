@@ -5,6 +5,19 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2rem 10rem;
+
+  @media (max-width: 1024px) {
+    padding: 1rem 5rem;
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    background: ${(props) => props.theme.color.white};
+    border-bottom: 1px solid ${(props) => props.theme.color['off-white']};
+    width: 100%;
+    padding: 1rem 2rem;
+    z-index: 1;
+  }
 `
 
 export const HeaderInfo = styled.div`

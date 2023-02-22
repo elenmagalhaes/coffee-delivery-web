@@ -33,10 +33,36 @@ export const BannerSection = styled.section`
   justify-content: space-between;
   align-items: center;
   padding: 5.75rem 10rem;
+
+  @media (max-width: 1024px) {
+    padding: 5rem 5rem 3rem;
+
+    img {
+      width: 344px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 5.75rem 2.25rem 3rem;
+    text-align: center;
+
+    img {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    text-align: left;
+  }
 `
 
 export const BannerInfo = styled.div`
   width: 36.75rem;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `
 
 export const BenefitsContainer = styled.div`
