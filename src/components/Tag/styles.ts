@@ -16,8 +16,14 @@ export const TagItem = styled.div<TagItemProps>`
   ${(props) =>
     props.backgroundColor &&
     `
-    border: 0;
+      border: 0;
       color: ${(props: any) => props.theme.color['yellow-900']};
       background-color: ${props.backgroundColor};
     `}
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props: any) => props.theme.color['yellow-900']};
+    background-color: ${(props: any) => props.theme.color['yellow-100']};
+  }
 `
