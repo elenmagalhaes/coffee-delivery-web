@@ -45,7 +45,7 @@ export const CatalogList = styled.div`
   grid-row-gap: 3rem;
   grid-column-gap: 2rem;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 480px) {
     width: 100%;
   }
 `

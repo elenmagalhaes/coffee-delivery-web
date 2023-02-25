@@ -27,6 +27,7 @@ export const HeaderInfo = styled.div`
   gap: 0.75rem;
 
   a {
+    position: relative;
     border-radius: 6px;
     padding: 0.5rem;
     background: ${(props) => props.theme.color['yellow-100']};
@@ -50,4 +51,21 @@ export const LocationTag = styled.div`
   span {
     color: ${(props) => props.theme.color['purple-900']};
   }
+`
+
+export const BadgeShippingCart = styled.span`
+  position: absolute;
+  top: -0.375rem;
+  right: -0.375rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  min-width: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: ${(props) => props.theme.color['yellow-900']};
+  color: ${(props) => props.theme.color.white};
+  font-weight: ${(props) => props.theme.typography.weight.bold};
+  font-size: 0.75rem;
 `

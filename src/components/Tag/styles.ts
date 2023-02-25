@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 interface TagItemProps {
   backgroundColor?: string
@@ -13,6 +13,8 @@ export const TagItem = styled.div<TagItemProps>`
   border-radius: 12px;
   border: 1px solid ${(props) => props.theme.color['yellow-500']};
   color: ${(props) => props.theme.color['yellow-900']};
+  cursor: pointer;
+
   ${(props) =>
     props.backgroundColor &&
     `
@@ -20,10 +22,9 @@ export const TagItem = styled.div<TagItemProps>`
       color: ${(props: any) => props.theme.color['yellow-900']};
       background-color: ${props.backgroundColor};
     `}
-  cursor: pointer;
 
   &:hover {
     color: ${(props: any) => props.theme.color['yellow-900']};
-    background-color: ${(props: any) => props.theme.color['yellow-100']};
+    background: ${(props: any) => props.theme.color['yellow-100']};
   }
 `

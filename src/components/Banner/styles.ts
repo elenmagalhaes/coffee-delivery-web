@@ -16,7 +16,7 @@ export const Heading = styled.h1`
   font-family: ${(props) => props.theme.typography.font.secondary};
   font-weight: ${(props) => props.theme.typography.weight['extra-bold']};
   font-size: 3rem;
-  line-height: 130%;
+  line-height: 160%;
   color: ${(props) => props.theme.color['gray-900']};
 `
 

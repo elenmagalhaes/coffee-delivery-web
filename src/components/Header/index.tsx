@@ -1,7 +1,12 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 
-import { HeaderContainer, HeaderInfo, LocationTag } from './styles'
+import {
+  BadgeShippingCart,
+  HeaderContainer,
+  HeaderInfo,
+  LocationTag,
+} from './styles'
 import logo from '../../assets/logo-coffee-delivery.svg'
 import { theme } from '../../styles/theme'
 
@@ -22,6 +27,7 @@ export const Header = () => {
             weight="fill"
             color={theme.color['yellow-900']}
           />
+          <BadgeShippingCart className="badge">3</BadgeShippingCart>
         </NavLink>
       </HeaderInfo>
     </HeaderContainer>
