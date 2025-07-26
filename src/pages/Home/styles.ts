@@ -7,7 +7,6 @@ interface IStyle {
 	color: string;
 }
 
-
 export const PageContainer = styled.main`
 	display: flex;
 	flex-direction: column;
@@ -59,7 +58,7 @@ export const Subtitle = styled.p`
 export const Features = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-gap: 1.25rem;
+	gap: 1.25rem;
 	
 	> div {
 		flex: 1 1 calc(50% - 0.625rem);
@@ -72,7 +71,6 @@ export const Feature = styled.div`
 	gap: 0.75rem;
 `;
 
-// ...existing code...
 export const FeatureIcon = styled.div.withConfig({
 	shouldForwardProp: (prop) => prop !== 'colorType',
 }) <IStyle>`
@@ -100,7 +98,7 @@ export const CoffeesContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 2rem 10rem;
-	gap: 2.125rem;
+	gap: 3.5rem;
 `;
 
 export const CoffeesHeader = styled.div`
@@ -117,7 +115,109 @@ export const CoffeesTitle = styled.div`
 	color: ${({ theme }) => theme.colors.base.subtitle};
 `;
 
-export const TagsContainer = styled.div`
+export const FiltersContainer = styled.div`
 	display: flex;
 	gap : 0.5rem;
+`;
+
+export const CoffeesList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 17rem);
+  justify-content: flex-start;
+  gap: 2rem;
+`;
+
+export const CoffeeCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 6px 36px;
+  width: 17rem;
+  height: 19.37rem;
+  background: ${({ theme }) => theme.colors.base.card};
+  padding: 1.25rem 1.5rem;
+
+  img {
+	margin-top: -3.25rem;
+	display: block;
+  }
+`;
+
+export const CardHeader = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+`;
+
+export const TagsContainer = styled.div`
+	display: flex;
+	gap: 0.25rem;
+`;
+
+
+export const CardContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.5rem;
+`;
+
+export const CardTitle = styled.span`
+	font-family: ${({ theme }) => theme.typography.fonts.title};
+	font-size: ${({ theme }) => theme.typography.size.xxlarge};
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
+	line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+	color: ${({ theme }) => theme.colors.base.title};
+`;
+
+export const CardDescription = styled.span`
+	font-family: ${({ theme }) => theme.typography.fonts.text};
+	font-size: ${({ theme }) => theme.typography.size.medium};
+	font-weight: ${({ theme }) => theme.typography.weight.regular};
+	line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+	color: ${({ theme }) => theme.colors.base.label};
+`;
+
+export const CardFooter = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1.5rem;
+	width: 100%;
+`;
+
+export const CardPrice = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.25rem;
+`;
+
+export const CardPriceType = styled.span`
+	font-family: ${({ theme }) => theme.typography.fonts.text};
+	font-size: ${({ theme }) => theme.typography.size.medium};
+`;
+
+export const CardPriceValue = styled.span`
+	font-family: ${({ theme }) => theme.typography.fonts.title};
+	font-size: ${({ theme }) => theme.typography.size.huge};
+	font-weight: ${({ theme }) => theme.typography.weight.extrabold};
+`;
+
+export const CardActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+export const ProductCounter = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
 `;
