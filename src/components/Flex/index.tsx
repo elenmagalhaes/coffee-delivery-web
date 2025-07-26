@@ -8,7 +8,9 @@ interface IStyle {
 	width?: string;
 }
 
-export const Flex = styled.div<IStyle>`
+export const Flex = styled.div.withConfig({
+	shouldForwardProp: (prop) => !['direction', 'justify', 'align', 'gap', 'width'].includes(prop),
+}) <IStyle>`
 	display: flex;
 	flex-direction: ${({ direction }) => direction || 'row'};
 	justify-content: ${({ justify }) => justify || 'center'};
