@@ -1,11 +1,11 @@
+import CartButton from "@/components/Button/CartButton";
+import Select from "@/components/Select";
+import Tag from "@/components/Tag";
+import { COFFEES_LIST, FILTER_OPTIONS } from "@/constants";
+import { theme } from "@/theme/theme";
+import { currencyMasker } from "@/utils/masker";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { useState } from "react";
-import CartButton from "src/components/Button/CartButton";
-import Select from "src/components/Select";
-import Tag from "src/components/Tag";
-import { COFFEES_LIST, FILTER_OPTIONS } from "src/constants";
-import { theme } from "src/theme/theme";
-import { currencyMasker } from "src/utils/masker";
 import * as S from "./styles";
 
 
@@ -24,11 +24,9 @@ const Home = () => {
 		console.log(`Tag clicked: ${name}`);
 
 		if (activeFilter === name) {
-			// Se clicar na tag já ativa, remove o filtro
 			setActiveFilter(null);
 			setCoffeesList(COFFEES_LIST);
 		} else {
-			// Ativa o filtro para a nova tag
 			setActiveFilter(name);
 			const filteredCoffees = COFFEES_LIST.filter((coffee) => coffee.tags.includes(name));
 			setCoffeesList(filteredCoffees);
@@ -37,8 +35,8 @@ const Home = () => {
 
 	return (
 		<S.PageContainer>
-			<S.Banner>
-				<S.Container>
+			<S.Container>
+				<S.Banner>
 					<S.TextSection>
 						<S.Header>
 							<S.Title>Encontre o café perfeito para qualquer hora do dia</S.Title>
@@ -76,8 +74,8 @@ const Home = () => {
 					<S.ImageSection>
 						<img src="src/assets/banner.svg" alt="Coffee" width={476} height={360} />
 					</S.ImageSection>
-				</S.Container>
-			</S.Banner>
+				</S.Banner>
+			</S.Container>
 
 			<S.CoffeesContainer>
 				<S.CoffeesHeader>

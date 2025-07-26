@@ -1,5 +1,5 @@
+import { theme } from "@/theme/theme";
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { theme } from "../../theme/theme";
 import { Actions, Cart, Container, Location, LocationCity } from "./styles";
 
 const Header = () => {

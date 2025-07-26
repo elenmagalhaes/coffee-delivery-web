@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/background.svg";
 
-
 interface IStyle {
 	colorType?: 'base' | 'brand';
 	color: string;
@@ -12,24 +11,23 @@ export const PageContainer = styled.main`
 	flex-direction: column;
 `;
 
-export const Banner = styled.section`
+export const Container = styled.section`
 	background: url(${backgroundImage});
   background-size: cover;
-  width: 100%;
 `;
 
-export const Container = styled.div`
+export const Banner = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3.5rem;
 	padding: 5.75rem 10rem;
+	gap: 3.5rem;
 `;
 
 export const TextSection = styled.div`
-	flex: 1;
 	display: flex;
 	flex-direction: column;
+	flex: 1;
 	gap: 4.125rem;
 `;
 
@@ -84,6 +82,7 @@ export const FeatureIcon = styled.div.withConfig({
 			: theme.colors.base[color as keyof typeof theme.colors.base]
 	};
 `;
+
 export const FeatureText = styled.span`
 	font-size: ${({ theme }) => theme.typography.size.large};
 `;
@@ -94,7 +93,7 @@ export const ImageSection = styled.div`
 	justify-content: center;
 `;
 
-export const CoffeesContainer = styled.div`
+export const CoffeesContainer = styled.section`
 	display: flex;
 	flex-direction: column;
 	padding: 2rem 10rem;
@@ -124,7 +123,7 @@ export const CoffeesList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 17rem);
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 2.5rem;
 `;
 
 export const CoffeeCard = styled.div`
@@ -140,8 +139,8 @@ export const CoffeeCard = styled.div`
   padding: 1.25rem 1.5rem;
 
   img {
-	margin-top: -3.25rem;
-	display: block;
+		margin-top: -3rem;
+		display: block;
   }
 `;
 
@@ -156,7 +155,6 @@ export const TagsContainer = styled.div`
 	display: flex;
 	gap: 0.25rem;
 `;
-
 
 export const CardContainer = styled.div`
 	display: flex;

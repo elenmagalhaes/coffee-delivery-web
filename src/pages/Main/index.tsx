@@ -1,12 +1,12 @@
+import { GlobalStyle } from '@/styles';
+import { theme } from '@/theme/theme';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../../styles';
-import { theme } from '../../theme/theme';
 
-import Wrapper from '../../components/Wrapper';
-import Checkout from '../../pages/Checkout';
-import CheckoutFilled from '../../pages/CheckoutFilled';
-import Home from '../../pages/Home';
+import Wrapper from '@/components/Wrapper';
+import Checkout from '@/pages/Checkout';
+import CheckoutFilled from '@/pages/CheckoutFilled';
+import Home from '@/pages/Home';
 
 function Main() {
 	return (
