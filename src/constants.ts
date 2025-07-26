@@ -1,0 +1,1 @@
+export const FILTER_OPTIONS = ['tradicional', 'especial', 'gelado', 'com leite', 'alcoólico'];
