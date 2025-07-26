@@ -25,9 +25,16 @@
 
 ## 💻 Sobre
 
-O **Coffee Delivery** é uma aplicação completa de delivery de café, onde você pode escolher seus cafés favoritos, selecionar o meio de pagamento desejado e receber no conforto da sua casa. Este projeto foi desenvolvido como parte do desafio do **Ignite 2022** da Rocketseat.
+O **Coffee Delivery** é uma aplicação de delivery de café desenvolvida com React e TypeScript, onde você pode navegar pelo catálogo de cafés, filtrar por categorias e selecionar seus cafés favoritos. O projeto está sendo desenvolvido como parte do desafio do **Ignite 2022** da Rocketseat.
 
----
+**Status atual:** Em desenvolvimento - Funcionalidades básicas de navegação e seleção de produtos implementadas.
+
+### 📈 Últimas atualizações
+
+- ✅ **Sistema de seleção de cafés** - Implementado catálogo completo com 14 tipos de café
+- ✅ **Funcionalidade de carrinho** - Lógica básica de adicionar produtos e controlar quantidades
+- ✅ **Componente Tag** - Sistema de filtros por categorias funcionais
+- ✅ **Configuração de código** - ESLint e Prettier configurados para manter qualidade do código
 
 ## 🎨 Layout
 
@@ -38,13 +45,11 @@ O layout da aplicação foi baseado no design disponível no Figma:
 </a>
 
 ### 📱 Preview
-
-<div align="left">
-	Em breve
-  <!-- <img src=".github/preview-desktop.png" alt="Preview Desktop" width="800"/> -->
-</div>
-
 ---
+
+<div align="center">
+  <img alt="Preview Desktop" src=".github/preview.png" width="800" />
+</div>
 
 ## 🚀 Tecnologias
 
@@ -54,22 +59,74 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **[TypeScript](https://www.typescriptlang.org/)** - Linguagem com tipagem estática
 - **[Styled Components](https://styled-components.com/)** - CSS-in-JS para estilização
 - **[Phosphor Icons](https://phosphoricons.com/)** - Biblioteca de ícones
-- **[React Router DOM](https://reactrouterdxom.com/)** - Roteamento da aplicação
-- **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários
+- **[React Router DOM](https://reactrouter.com/)** - Roteamento da aplicação
 - **[Vite](https://vitejs.dev/)** - Build tool e dev server
+- **[ESLint](https://eslint.org/)** - Ferramenta de linting para código
+- **[Prettier](https://prettier.io/)** - Formatador de código
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── @types/           # Tipos TypeScript customizados
+├── assets/           # Imagens e ícones
+│   └── coffees/      # Imagens dos produtos
+├── components/       # Componentes reutilizáveis
+│   ├── Button/       # Botões (Cart, Primary, etc.)
+│   ├── Header/       # Cabeçalho da aplicação
+│   ├── Select/       # Componente de seleção de quantidade
+│   ├── Tag/          # Tags de categorias
+│   └── Wrapper/      # Layout wrapper
+├── pages/            # Páginas da aplicação
+│   ├── Home/         # Página principal com catálogo
+│   ├── Checkout/     # Página de checkout (em desenvolvimento)
+│   └── CheckoutFilled/ # Página de confirmação (em desenvolvimento)
+├── theme/            # Sistema de temas e cores
+├── utils/            # Utilitários (máscaras, formatadores)
+└── constants.ts      # Constantes da aplicação (lista de cafés, filtros)
+```
 
 ---
 
 ## ⚡ Funcionalidades
 
-- [x] **Catálogo de cafés** - Visualizar diferentes tipos de café disponíveis
-- [x] **Carrinho de compras** - Adicionar, remover e alterar quantidades
-- [x] **Formulário de endereço** - Preenchimento dos dados de entrega
-- [x] **Geolocalização** - Detecção automática da localização do usuário
-- [x] **Cálculo de preços** - Total do pedido com taxas de entrega
-- [x] **Finalização do pedido** - Confirmação e resumo da compra
-- [x] **Design responsivo** - Adaptação para diferentes tamanhos de tela
-- [x] **Tema customizado** - Sistema de cores e tipografia consistente
+### ✅ Implementadas
+
+- [x] **Catálogo de cafés** - Visualização de 14 tipos diferentes de café com imagens, descrições e preços
+- [x] **Sistema de filtros** - Filtragem por tags (tradicional, especial, gelado, com leite, alcoólico)
+- [x] **Seleção de quantidade** - Controle de quantidade para cada produto com incremento/decremento
+- [x] **Interface responsiva** - Design adaptativo usando Styled Components
+- [x] **Sistema de temas** - Paleta de cores consistente com o design system
+- [x] **Navegação** - Roteamento entre páginas (Home, Checkout, CheckoutFilled)
+- [x] **Header interativo** - Exibição da localização e acesso ao carrinho
+- [x] **Componentes reutilizáveis** - Tags, botões, seletores e outros componentes modulares
+- [x] **Formatação de valores** - Máscaras para exibição de preços em formato brasileiro (R$)
+
+### 🚧 Em desenvolvimento
+
+- [ ] **Carrinho de compras** - Funcionalidade completa de adicionar/remover produtos
+- [ ] **Formulário de endereço** - Preenchimento e validação dos dados de entrega
+- [ ] **Cálculo de preços** - Total do pedido com taxas de entrega
+- [ ] **Finalização do pedido** - Confirmação e resumo da compra
+- [ ] **Gerenciamento de estado** - Context API ou Redux para estado global
+
+### 🧩 Componentes Principais
+
+- **Header** - Navegação com logo, localização e acesso ao carrinho
+- **Tag** - Sistema de tags para categorização dos produtos (tradicional, especial, etc.)
+- **Select** - Seletor de quantidade com botões de incremento/decremento
+- **CartButton** - Botão para adicionar produtos ao carrinho com badge de quantidade
+- **CoffeeCard** - Card de produto com imagem, descrição, preço e controles
+
+### 💡 Pontos de melhoria
+
+- [ ] **Geolocalização** - Implementar detecção automática da localização do usuário (atualmente estático: "São Bernardo do Campo, SP")
+- [ ] **Persistência de dados** - Armazenamento do carrinho no localStorage
+- [ ] **Animações** - Transições suaves entre estados e páginas
+- [ ] **Acessibilidade** - Melhorias para screen readers e navegação por teclado
+- [ ] **Testes** - Implementação de testes unitários e de integração
 
 ---
 
