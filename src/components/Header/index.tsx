@@ -11,7 +11,7 @@ const Header = () => {
 
 	return (
 		<Container>
-			<img src="src/assets/logo.svg" alt="Coffee Delivery Logo" style={{ width: '85px', height: '40px' }} />
+			<img src="/assets/logo.svg" alt="Coffee Delivery Logo" style={{ width: '85px', height: '40px' }} />
 			<Actions>
 				<Location>
 					<MapPin size={22} weight="fill" color={theme.colors.brand.purple} />

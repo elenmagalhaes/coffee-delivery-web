@@ -74,7 +74,7 @@ const Home = () => {
 					</S.TextSection>
 
 					<S.ImageSection>
-						<img src="src/assets/banner.svg" alt="Coffee" width={476} height={360} />
+						<img src="/assets/banner.svg" alt="Coffee" width={476} height={360} />
 					</S.ImageSection>
 				</S.Banner>
 			</S.Container>

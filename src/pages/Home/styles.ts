@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImage from "../../assets/background.svg";
+import backgroundImage from "/assets/background.svg";
 
 interface IStyle {
 	colorType?: 'base' | 'brand';
