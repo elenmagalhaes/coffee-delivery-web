@@ -1,6 +1,6 @@
 import { GlobalStyle } from '@/styles';
 import { theme } from '@/theme/theme';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Wrapper from '@/components/Wrapper';
@@ -11,7 +11,7 @@ import Home from '@/pages/Home';
 function Main() {
 	return (
 		<ThemeProvider theme={theme}>
-			<BrowserRouter>
+			<HashRouter>
 				<Routes>
 					<Route path="/" element={<Wrapper />}>
 						<Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function Main() {
 						<Route path="/checkout-filled" element={<CheckoutFilled />} />
 					</Route>
 				</Routes>
-			</BrowserRouter>
+			</HashRouter>
 			<GlobalStyle />
 		</ThemeProvider>
 	)
