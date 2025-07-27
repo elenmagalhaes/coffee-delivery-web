@@ -2,6 +2,7 @@ import CartButton from "@/components/Button/CartButton";
 import Select from "@/components/Select";
 import Tag from "@/components/Tag";
 import { COFFEES_LIST, FILTER_OPTIONS } from "@/constants";
+import { useCartStore } from "@/store/cart";
 import { theme } from "@/theme/theme";
 import { currencyMasker } from "@/utils/masker";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
@@ -15,6 +16,7 @@ const Home = () => {
 	const [quantities, setQuantities] = useState(() =>
 		Object.fromEntries(COFFEES_LIST.map((coffee) => [coffee.id, 1]))
 	);
+	const addToCart = useCartStore(state => state.addToCart)
 
 	const handleQuantityChange = (id: number, value: number) => {
 		setQuantities((prev) => ({ ...prev, [id]: value }));
@@ -129,7 +131,7 @@ const Home = () => {
 									</S.ProductCounter>
 									<CartButton
 										backgroundColor="purpleDark"
-										onClick={() => console.log(`Add ${coffee.id} to cart, qty: ${quantities[coffee.id]}`)}
+										onClick={() => addToCart(coffee, quantities[coffee.id])}
 									>
 										<ShoppingCart size={22} weight="fill" color={theme.colors.base.white} />
 									</CartButton>

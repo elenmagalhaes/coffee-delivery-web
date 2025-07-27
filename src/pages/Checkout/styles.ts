@@ -122,11 +122,6 @@ export const PaymentSection = styled.div`
 	gap: 0.75rem;
 `;
 
-// export const PaymentCard = styled.div`
-// 	display: flex;
-// 	flex: 1;
-// `;
-
 export const PaymentCard = styled.button.withConfig({
 	shouldForwardProp: (prop) => !['colorType', 'color', 'selected'].includes(prop),
 }) <IStyle & { selected?: boolean }>`

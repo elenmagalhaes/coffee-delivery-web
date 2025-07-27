@@ -18,8 +18,6 @@ const Checkout = () => {
 	const {
 		register,
 		handleSubmit,
-		watch,
-		formState: { errors },
 	} = useForm<Inputs>()
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
@@ -88,7 +86,7 @@ const Checkout = () => {
 				<S.RightSection>
 					<S.Title>Cafés selecionados</S.Title>
 					<S.Card height="182px" borderRadius="0.5rem 2.75rem">
-						<button type="submit" />
+						{/* <button type="submit" /> */}
 					</S.Card>
 				</S.RightSection>
 			</S.Container>

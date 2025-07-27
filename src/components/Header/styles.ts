@@ -35,4 +35,23 @@ export const Cart = styled.a`
 	padding: 0.5rem;
 	border-radius: 0.375rem;
 	background: ${({ theme }) => theme.colors.brand.yellowLight};
+	position: relative;
+`;
+
+export const CartBadge = styled.span`
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background: ${({ theme }) => theme.colors.brand.yellowDark};
+	color: ${({ theme }) => theme.colors.base.white};
+	border-radius: 50%;
+	min-width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: ${({ theme }) => theme.typography.size.xsmall};
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
+	padding: 0 6px;
+	z-index: 1;
 `;
