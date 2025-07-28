@@ -1,4 +1,4 @@
-import CartButton from "@/components/Button/CartButton";
+import CartButton from "@/components/CartButton";
 import Select from "@/components/Select";
 import Tag from "@/components/Tag";
 import { COFFEES_LIST, FILTER_OPTIONS } from "@/constants";

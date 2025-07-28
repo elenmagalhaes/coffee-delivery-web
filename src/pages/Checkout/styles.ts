@@ -59,7 +59,6 @@ export const Card = styled.div.withConfig({
 	display: flex;
 	flex-direction: column;
 	padding: 2.5rem;
-	gap: 2rem;
 	background-color: ${({ theme }) => theme.colors.base.card};
 	height: ${({ height }) => height || "auto"};
 	border-radius: ${({ borderRadius }) => borderRadius || "0.5rem"};

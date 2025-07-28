@@ -1,6 +1,12 @@
+import CoffeeCard from "@/components/CoffeeCard";
 import { Flex } from "@/components/Flex";
+import OrderSummary from "@/components/OrderSummary";
+import RemoveButton from "@/components/RemoveButton";
+import Select from "@/components/Select";
+import { useCartStore } from "@/store/cart";
 import { theme } from "@/theme/theme";
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
+import { useEffect, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import * as S from "./styles";
 
@@ -15,12 +21,54 @@ type Inputs = {
 }
 
 const Checkout = () => {
+	const { items, removeFromCart } = useCartStore();
+	const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+
 	const {
 		register,
 		handleSubmit,
 	} = useForm<Inputs>()
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+	// Inicializar quantities com base nos items do carrinho
+	useEffect(() => {
+		const initialQuantities: { [key: number]: number } = {};
+		items.forEach(item => {
+			initialQuantities[item.coffee.id] = item.quantity;
+		});
+		setQuantities(initialQuantities);
+	}, [items]);
+
+	const handleQuantityChange = (coffeeId: number, newQuantity: number) => {
+		setQuantities(prev => ({
+			...prev,
+			[coffeeId]: newQuantity
+		}));
+	};
+
+	const handleRemoveItem = (coffeeId: number) => {
+		removeFromCart(coffeeId);
+	};
+
+	const handleCancelOrder = () => {
+		// Lógica para cancelar o pedido
+		console.log('Pedido cancelado');
+	};
+
+	const handleConfirmOrder = () => {
+		// Lógica para confirmar o pedido
+		console.log('Pedido confirmado');
+	};
+
+	// Calcular totais
+	const itemsTotal = items.reduce((total, item) => {
+		const quantity = quantities[item.coffee.id] || item.quantity;
+		return total + (item.coffee.price * quantity);
+	}, 0);
+
+	const deliveryFee = 3.50;
+	const totalAmount = itemsTotal + deliveryFee;
 
 	return (
 		<S.PageContainer>
@@ -85,8 +133,37 @@ const Checkout = () => {
 
 				<S.RightSection>
 					<S.Title>Cafés selecionados</S.Title>
-					<S.Card height="182px" borderRadius="0.5rem 2.75rem">
-						{/* <button type="submit" /> */}
+					<S.Card height="auto" borderRadius="0.5rem 2.75rem">
+						{items.length === 0 ? (
+							<p>Nenhum café selecionado</p>
+						) : (
+							items.map((item) => (
+								<CoffeeCard
+									key={item.coffee.id}
+									coffee={item.coffee}
+									variant="checkout"
+									quantity={quantities[item.coffee.id] || item.quantity}
+									actions={
+										<>
+											<Select
+												value={quantities[item.coffee.id] || item.quantity}
+												onChange={(newQuantity) => handleQuantityChange(item.coffee.id, newQuantity)}
+											/>
+											<RemoveButton onClick={() => handleRemoveItem(item.coffee.id)} />
+										</>
+									}
+								/>
+							))
+						)}
+						{items.length > 0 && (
+							<OrderSummary
+								itemsTotal={itemsTotal}
+								deliveryFee={deliveryFee}
+								total={totalAmount}
+								onCancel={handleCancelOrder}
+								onConfirm={handleConfirmOrder}
+							/>
+						)}
 					</S.Card>
 				</S.RightSection>
 			</S.Container>
