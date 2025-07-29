@@ -1,4 +1,5 @@
 import type { Coffee } from "@/hooks";
+import { Typography } from "../Typography";
 import * as S from "./styles";
 
 interface CoffeeCardProps {
@@ -26,11 +27,9 @@ const CoffeeCard = ({
 				<S.CheckoutCoffeeContent>
 					<S.CheckoutCoffeeHeader>
 						<S.CheckoutCoffeeInfo>
-							<S.CheckoutCoffeeTitle>{coffee.name}</S.CheckoutCoffeeTitle>
+							<Typography color="subtitle" size="large">{coffee.name}</Typography>
 						</S.CheckoutCoffeeInfo>
-						<S.CheckoutCoffeePrice>
-							R$ {totalPrice}
-						</S.CheckoutCoffeePrice>
+						<Typography size="large" weight="bold">R$ {totalPrice}</Typography>
 					</S.CheckoutCoffeeHeader>
 					{actions && (
 						<S.CheckoutCoffeeActions>
@@ -57,8 +56,8 @@ const CoffeeCard = ({
 			<S.CoffeeDescription>{coffee.description}</S.CoffeeDescription>
 
 			<S.CoffeePriceContainer>
-				<S.PriceLabel>R$</S.PriceLabel>
-				<S.PriceValue>{formattedPrice}</S.PriceValue>
+				<Typography>R$</Typography>
+				<Typography fontFamily="title" size="xxlarge" weight="bold">{formattedPrice}</Typography>
 			</S.CoffeePriceContainer>
 
 			{actions && (

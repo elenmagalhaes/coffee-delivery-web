@@ -14,30 +14,8 @@ export const Row = styled.div`
 	align-items: center;
 `;
 
-export const Label = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.medium};
-	color: ${({ theme }) => theme.colors.base.text};
-`;
-
-export const Value = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.large};
-	color: ${({ theme }) => theme.colors.base.text};
-`;
-
 export const TotalRow = styled(Row)`
 	margin-top: 0.75rem;
-`;
-
-export const TotalLabel = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.xxlarge};
-	font-weight: ${({ theme }) => theme.typography.weight.bold};
-	color: ${({ theme }) => theme.colors.base.subtitle};
-`;
-
-export const TotalValue = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.xxlarge};
-	font-weight: ${({ theme }) => theme.typography.weight.bold};
-	color: ${({ theme }) => theme.colors.base.subtitle};
 `;
 
 export const ButtonContainer = styled.div`

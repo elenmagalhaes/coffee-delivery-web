@@ -16,17 +16,11 @@ export const Actions = styled.div`
 export const Location = styled.div`
 	display: flex;
 	gap: 0.25rem;
-	align-items: center;
+	align-items: flex-end;
 	border-radius: 0.375rem;
 	padding: 0.625rem 0.5rem;
 	color: ${({ theme }) => theme.colors.brand.purpleDark};
 	background: ${({ theme }) => theme.colors.brand.purpleLight};
-`;
-
-export const LocationCity = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.medium};
-	font-weight: ${({ theme }) => theme.typography.weight.regular};
-	line-height: ${({ theme }) => theme.typography.lineHeight.normal};
 `;
 
 export const Cart = styled.a`

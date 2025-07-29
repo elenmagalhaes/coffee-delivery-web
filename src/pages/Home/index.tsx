@@ -1,6 +1,7 @@
 import CartButton from "@/components/CartButton";
 import Select from "@/components/Select";
 import Tag from "@/components/Tag";
+import { Typography } from "@/components/Typography";
 import { COFFEES_LIST, FILTER_OPTIONS } from "@/constants";
 import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
@@ -39,8 +40,12 @@ const Home = () => {
 				<S.Banner>
 					<S.TextSection>
 						<S.Header>
-							<S.Title>Encontre o café perfeito para qualquer hora do dia</S.Title>
-							<S.Subtitle>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</S.Subtitle>
+							<Typography fontFamily="title" color="title" size="xxhuge" weight="extrabold">
+								Encontre o café perfeito para qualquer hora do dia
+							</Typography>
+							<Typography color="subtitle" size="xxlarge" lineHeight="expanded">
+								Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora
+							</Typography>
 						</S.Header>
 
 						<S.Features>
@@ -48,25 +53,25 @@ const Home = () => {
 								<S.FeatureIcon colorType="brand" color="yellowDark">
 									<ShoppingCart size={16} weight="fill" color={theme.colors.base.white} />
 								</S.FeatureIcon>
-								<S.FeatureText>Compra simples e segura</S.FeatureText>
+								<Typography size="large">Compra simples e segura</Typography>
 							</S.Feature>
 							<S.Feature>
 								<S.FeatureIcon colorType="base" color="text">
 									<Package size={16} weight="fill" color={theme.colors.base.white} />
 								</S.FeatureIcon>
-								<S.FeatureText>Embalagem mantém o café intacto</S.FeatureText>
+								<Typography size="large">Embalagem mantém o café intacto</Typography>
 							</S.Feature>
 							<S.Feature>
 								<S.FeatureIcon colorType="brand" color="yellow">
 									<Timer size={16} weight="fill" color={theme.colors.base.white} />
 								</S.FeatureIcon>
-								<S.FeatureText>Entrega rápida e rastreada</S.FeatureText>
+								<Typography size="large">Entrega rápida e rastreada</Typography>
 							</S.Feature>
 							<S.Feature>
 								<S.FeatureIcon colorType="brand" color="purple">
 									<Coffee size={16} weight="fill" color={theme.colors.base.white} />
 								</S.FeatureIcon>
-								<S.FeatureText>O café chega fresquinho até você</S.FeatureText>
+								<Typography size="large">O café chega fresquinho até você</Typography>
 							</S.Feature>
 						</S.Features>
 					</S.TextSection>
@@ -79,7 +84,9 @@ const Home = () => {
 
 			<S.CoffeesContainer>
 				<S.CoffeesHeader>
-					<S.CoffeesTitle>Nossos cafés</S.CoffeesTitle>
+					<Typography fontFamily="title" color="subtitle" size="xhuge" weight="extrabold">
+						Nossos cafés
+					</Typography>
 					<S.FiltersContainer>
 						{FILTER_OPTIONS.map((item) => (
 							<Tag
@@ -110,13 +117,13 @@ const Home = () => {
 								</S.TagsContainer>
 							</S.CardHeader>
 							<S.CardContainer>
-								<S.CardTitle>{coffee.name}</S.CardTitle>
-								<S.CardDescription>{coffee.description}</S.CardDescription>
+								<Typography fontFamily="title" color="title" size="xxlarge" weight="bold">{coffee.name}</Typography>
+								<Typography color="label">{coffee.description}</Typography>
 							</S.CardContainer>
 							<S.CardFooter>
 								<S.CardPrice>
-									<S.CardPriceType>R$</S.CardPriceType>
-									<S.CardPriceValue>{currencyMasker(coffee.price)}</S.CardPriceValue>
+									<Typography>R$</Typography>
+									<Typography fontFamily="title" size="huge" weight="extrabold">{currencyMasker(coffee.price)}</Typography>
 								</S.CardPrice>
 								<S.CardActions>
 									<S.ProductCounter>

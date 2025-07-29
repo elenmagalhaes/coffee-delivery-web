@@ -3,6 +3,7 @@ import { Flex } from "@/components/Flex";
 import OrderSummary from "@/components/OrderSummary";
 import RemoveButton from "@/components/RemoveButton";
 import Select from "@/components/Select";
+import { Typography } from "@/components/Typography";
 import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
@@ -71,16 +72,18 @@ const Checkout = () => {
 		<S.PageContainer>
 			<S.Container onSubmit={handleSubmit(onSubmit)}>
 				<S.LeftSection>
-					<S.Title>Complete seu pedido</S.Title>
+					<Typography fontFamily="title" color="subtitle" size="xlarge" weight="bold">
+						Complete seu pedido
+					</Typography>
 					<S.Sections>
 						<S.Card height="372px" gap="32px">
 							<S.CardHeader>
 								<MapPin size={22} color={theme.colors.brand.yellowDark} />
 								<S.CardTitleContainer>
-									<S.CardTitle>Endereço de Entrega</S.CardTitle>
-									<S.CardSubtitle>
-										Informe o endereço onde deseja receber seu pedido
-									</S.CardSubtitle>
+									<Typography color="subtitle" size="large">
+										Endereço de Entrega
+									</Typography>
+									Informe o endereço onde deseja receber seu pedido
 								</S.CardTitleContainer>
 							</S.CardHeader>
 
@@ -103,10 +106,10 @@ const Checkout = () => {
 							<S.CardHeader>
 								<CurrencyDollar size={22} color={theme.colors.brand.purple} />
 								<S.CardTitleContainer>
-									<S.CardTitle>Pagamento</S.CardTitle>
-									<S.CardSubtitle>
-										O pagamento é feito na entrega. Escolha a forma que deseja pagar
-									</S.CardSubtitle>
+									<Typography color="subtitle" size="large">
+										Pagamento
+									</Typography>
+									O pagamento é feito na entrega. Escolha a forma que deseja pagar
 								</S.CardTitleContainer>
 							</S.CardHeader>
 
@@ -141,10 +144,12 @@ const Checkout = () => {
 				</S.LeftSection>
 
 				<S.RightSection>
-					<S.Title>Cafés selecionados</S.Title>
+					<Typography fontFamily="title" color="subtitle" size="xlarge" weight="bold">
+						Cafés selecionados
+					</Typography>
 					<S.Card height="auto" borderRadius="0.5rem 2.75rem">
 						{items.length === 0 ? (
-							<p>Nenhum café selecionado</p>
+							`Nenhum café selecionado`
 						) : (
 							items.map((item) => (
 								<CoffeeCard

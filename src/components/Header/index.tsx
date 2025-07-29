@@ -2,7 +2,8 @@ import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { Actions, Cart, CartBadge, Container, Location, LocationCity } from "./styles";
+import { Typography } from "../Typography";
+import { Actions, Cart, CartBadge, Container, Location } from "./styles";
 
 const Header = () => {
 	const { totalItems } = useApp();
@@ -15,7 +16,7 @@ const Header = () => {
 			<Actions>
 				<Location>
 					<MapPin size={22} weight="fill" color={theme.colors.brand.purple} />
-					<LocationCity>São Bernardo do Campo, SP</LocationCity>
+					<Typography color="purpleDark">São Bernardo do Campo, SP</Typography>
 				</Location>
 				<Cart as={Link} to="/checkout">
 					<ShoppingCart size={22} weight="fill" color={theme.colors.brand.yellowDark} />

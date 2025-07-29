@@ -26,13 +26,6 @@ export const Container = styled.form`
 	gap: 2rem;
 `;
 
-export const Title = styled.div`
-	font-family: ${({ theme }) => theme.typography.fonts.title};
-	font-size: ${({ theme }) => theme.typography.size.xlarge};
-	font-weight: ${({ theme }) => theme.typography.weight.bold};
-	color: ${({ theme }) => theme.colors.base.subtitle};
-`;
-
 export const LeftSection = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -76,16 +69,6 @@ export const CardTitleContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-`;
-
-export const CardTitle = styled.div`
-	font-size: ${({ theme }) => theme.typography.size.large};
-	color: ${({ theme }) => theme.colors.base.subtitle};
-`;
-
-export const CardSubtitle = styled.div`
-	font-size: ${({ theme }) => theme.typography.size.medium};
-	color: ${({ theme }) => theme.colors.base.text};
 `;
 
 export const SectionContent = styled.div`

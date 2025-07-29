@@ -61,19 +61,6 @@ export const CoffeePriceContainer = styled.div`
 	gap: 0.125rem;
 `;
 
-export const PriceLabel = styled.span`
-	font-size: ${({ theme }) => theme.typography.size.medium};
-	color: ${({ theme }) => theme.colors.base.text};
-	font-weight: ${({ theme }) => theme.typography.weight.regular};
-`;
-
-export const PriceValue = styled.span`
-	font-family: ${({ theme }) => theme.typography.fonts.title};
-	font-size: ${({ theme }) => theme.typography.size.xxlarge};
-	font-weight: ${({ theme }) => theme.typography.weight.bold};
-	color: ${({ theme }) => theme.colors.base.text};
-`;
-
 export const CoffeeActionsContainer = styled.div`
 	display: flex;
 	align-items: center;
@@ -125,17 +112,6 @@ export const CheckoutCoffeeInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-`;
-
-export const CheckoutCoffeeTitle = styled.div`
-	font-size: ${({ theme }) => theme.typography.size.large};
-	color: ${({ theme }) => theme.colors.base.subtitle};
-`;
-
-export const CheckoutCoffeePrice = styled.div`
-	font-size: ${({ theme }) => theme.typography.size.large};
-	font-weight: ${({ theme }) => theme.typography.weight.bold};
-	color: ${({ theme }) => theme.colors.base.text};
 `;
 
 export const CheckoutCoffeeActions = styled.div`

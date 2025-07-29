@@ -27,7 +27,7 @@ export const Container = styled.div`
 	align-items: flex-end;
 	justify-content: space-between;
 	width: 100%;
-	gap: 6.375rem; /* 102px */
+	gap: 6.375rem;
 	margin-top: 2.5rem;
 	
 	@media (max-width: 1200px) {
@@ -46,7 +46,7 @@ export const ImageContainer = styled.div`
 	flex-direction: column;
 	flex: 1;
 	gap: 4.125rem;
-	max-width: 30.75rem; /* 492px */
+	max-width: 30.75rem;
 	
 	img {
 		width: 100%;
@@ -70,13 +70,6 @@ export const ImageContainer = styled.div`
 	}
 `;
 
-export const Title = styled.div`
-font-family: ${({ theme }) => theme.typography.fonts.title};
-	font-size: ${({ theme }) => theme.typography.size.xhuge};
-	font-weight: ${({ theme }) => theme.typography.weight.extrabold};
-	color: ${({ theme }) => theme.colors.brand.yellowDark};
-`;
-
 export const Subtitle = styled.div`
 	font-size: ${({ theme }) => theme.typography.size.xxlarge};
 	color: ${({ theme }) => theme.colors.base.subtitle};
@@ -86,7 +79,7 @@ export const AddressContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	width: 32.875rem; /* 526px */
+	width: 32.875rem;
 	min-width: 32.875rem;
 	padding: 2.5rem;
 	border-radius: 0.375rem 2.25rem;
@@ -142,9 +135,4 @@ export const AddressItem = styled.div`
 	display: flex;
 	align-items: flex-start;
 	gap: 0.75rem;
-`;
-
-export const AddressText = styled.div`
-	font-size: ${({ theme }) => theme.typography.size.large};
-	color: ${({ theme }) => theme.colors.base.text};
 `;

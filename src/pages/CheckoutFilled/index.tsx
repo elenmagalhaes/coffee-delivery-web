@@ -1,4 +1,5 @@
 import { Flex } from "@/components/Flex";
+import { Typography } from "@/components/Typography";
 import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
@@ -9,8 +10,12 @@ const CheckoutFilled = () => {
 	return (
 		<S.PageContainer>
 			<Flex direction="column" gap="0.25rem" align="flex-start">
-				<S.Title>Uhu! Pedido confirmado</S.Title>
-				<S.Subtitle>Agora é só aguardar que logo o café chegará até você</S.Subtitle>
+				<Typography fontFamily="title" color="yellowDark" size="xhuge" weight="extrabold">
+					Uhu! Pedido confirmado
+				</Typography>
+				<Typography color="subtitle" size="xxlarge">
+					Agora é só aguardar que logo o café chegará até você
+				</Typography>
 			</Flex>
 
 			<S.Container>
@@ -21,8 +26,12 @@ const CheckoutFilled = () => {
 								<MapPin size={16} weight="fill" color={theme.colors.base.white} />
 							</S.Circle>
 							<Flex direction="column">
-								<S.AddressText>Entrega em <strong>{address.street}, {address.streetNumber}</strong></S.AddressText>
-								<S.AddressText>{address.neighborhood} - {address.city}, {address.state}</S.AddressText>
+								<Typography size="large">
+									Entrega em <strong>{address.street}, {address.streetNumber}</strong>
+								</Typography>
+								<Typography size="large">
+									{address.neighborhood} - {address.city}, {address.state}
+								</Typography>
 							</Flex>
 						</S.AddressItem>
 
@@ -31,8 +40,12 @@ const CheckoutFilled = () => {
 								<Timer size={16} weight="fill" color={theme.colors.base.white} />
 							</S.Circle>
 							<Flex direction="column">
-								<S.AddressText>Previsão de entrega</S.AddressText>
-								<S.AddressText><strong>20 min - 30 min</strong></S.AddressText>
+								<Typography size="large">
+									Previsão de entrega
+								</Typography>
+								<Typography size="large">
+									<strong>20 min - 30 min</strong>
+								</Typography>
 							</Flex>
 						</S.AddressItem>
 
@@ -41,8 +54,12 @@ const CheckoutFilled = () => {
 								<CurrencyDollar size={16} weight="fill" color={theme.colors.base.white} />
 							</S.Circle>
 							<Flex direction="column">
-								<S.AddressText>Pagamento na entrega</S.AddressText>
-								<S.AddressText><strong>{getPaymentMethodLabel() || 'Não selecionado'}</strong></S.AddressText>
+								<Typography size="large">
+									Pagamento na entrega
+								</Typography>
+								<Typography size="large">
+									<strong>{getPaymentMethodLabel() || 'Não selecionado'}</strong>
+								</Typography>
 							</Flex>
 						</S.AddressItem>
 					</S.AddressContainer>

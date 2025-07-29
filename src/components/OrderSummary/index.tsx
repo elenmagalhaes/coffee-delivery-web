@@ -1,3 +1,4 @@
+import { Typography } from "../Typography";
 import * as S from "./styles";
 
 interface OrderSummaryProps {
@@ -10,16 +11,16 @@ const OrderSummary = ({ itemsTotal, deliveryFee, total }: OrderSummaryProps) => 
 	return (
 		<S.Container>
 			<S.Row>
-				<S.Label>Total de itens</S.Label>
-				<S.Value>R$ {itemsTotal.toFixed(2).replace('.', ',')}</S.Value>
+				<Typography>Total de itens</Typography>
+				<Typography size="large">R$ {itemsTotal.toFixed(2).replace('.', ',')}</Typography>
 			</S.Row>
 			<S.Row>
-				<S.Label>Entrega</S.Label>
-				<S.Value>R$ {deliveryFee.toFixed(2).replace('.', ',')}</S.Value>
+				<Typography>Entrega</Typography>
+				<Typography size="large">R$ {deliveryFee.toFixed(2).replace('.', ',')}</Typography>
 			</S.Row>
 			<S.TotalRow>
-				<S.TotalLabel>Total</S.TotalLabel>
-				<S.TotalValue>R$ {total.toFixed(2).replace('.', ',')}</S.TotalValue>
+				<Typography color="subtitle" size="xxlarge" weight="bold">Total de itens</Typography>
+				<Typography color="subtitle" size="xxlarge" weight="bold">R$ {total.toFixed(2).replace('.', ',')}</Typography>
 			</S.TotalRow>
 		</S.Container>
 	);
