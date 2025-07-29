@@ -3,48 +3,31 @@ import { Flex } from "@/components/Flex";
 import OrderSummary from "@/components/OrderSummary";
 import RemoveButton from "@/components/RemoveButton";
 import Select from "@/components/Select";
+import { useAddressStore } from "@/store/address";
 import { useCartStore } from "@/store/cart";
 import { theme } from "@/theme/theme";
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
-import { useEffect, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-
-type Inputs = {
-	zipCode: string
-	street: string
-	streetNumber: string
-	complement: string
-	neighborhood: string
-	city: string
-	state: string
-}
+import type { Inputs } from "./types";
 
 const Checkout = () => {
-	const { items, removeFromCart } = useCartStore();
-	const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-
+	const { items, removeFromCart, updateQuantity, clearCart, getTotalPrice, deliveryFee } = useCartStore();
+	const { setAddress } = useAddressStore();
+	const navigate = useNavigate();
 	const {
 		register,
 		handleSubmit,
 	} = useForm<Inputs>()
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-	// Inicializar quantities com base nos items do carrinho
-	useEffect(() => {
-		const initialQuantities: { [key: number]: number } = {};
-		items.forEach(item => {
-			initialQuantities[item.coffee.id] = item.quantity;
-		});
-		setQuantities(initialQuantities);
-	}, [items]);
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		setAddress(data);
+		navigate('/checkout-filled');
+	};
 
 	const handleQuantityChange = (coffeeId: number, newQuantity: number) => {
-		setQuantities(prev => ({
-			...prev,
-			[coffeeId]: newQuantity
-		}));
+		updateQuantity(coffeeId, newQuantity);
 	};
 
 	const handleRemoveItem = (coffeeId: number) => {
@@ -52,23 +35,8 @@ const Checkout = () => {
 	};
 
 	const handleCancelOrder = () => {
-		// Lógica para cancelar o pedido
-		console.log('Pedido cancelado');
+		clearCart();
 	};
-
-	const handleConfirmOrder = () => {
-		// Lógica para confirmar o pedido
-		console.log('Pedido confirmado');
-	};
-
-	// Calcular totais
-	const itemsTotal = items.reduce((total, item) => {
-		const quantity = quantities[item.coffee.id] || item.quantity;
-		return total + (item.coffee.price * quantity);
-	}, 0);
-
-	const deliveryFee = 3.50;
-	const totalAmount = itemsTotal + deliveryFee;
 
 	return (
 		<S.PageContainer>
@@ -76,7 +44,7 @@ const Checkout = () => {
 				<S.LeftSection>
 					<S.Title>Complete seu pedido</S.Title>
 					<S.Sections>
-						<S.Card height="372px">
+						<S.Card height="372px" gap="32px">
 							<S.CardHeader>
 								<MapPin size={22} color={theme.colors.brand.yellowDark} />
 								<S.CardTitleContainer>
@@ -102,7 +70,7 @@ const Checkout = () => {
 							</S.SectionContent>
 						</S.Card>
 
-						<S.Card height="207px">
+						<S.Card height="207px" gap="32px">
 							<S.CardHeader>
 								<CurrencyDollar size={22} color={theme.colors.brand.purple} />
 								<S.CardTitleContainer>
@@ -142,11 +110,11 @@ const Checkout = () => {
 									key={item.coffee.id}
 									coffee={item.coffee}
 									variant="checkout"
-									quantity={quantities[item.coffee.id] || item.quantity}
+									quantity={item.quantity}
 									actions={
 										<>
 											<Select
-												value={quantities[item.coffee.id] || item.quantity}
+												value={item.quantity}
 												onChange={(newQuantity) => handleQuantityChange(item.coffee.id, newQuantity)}
 											/>
 											<RemoveButton onClick={() => handleRemoveItem(item.coffee.id)} />
@@ -156,13 +124,21 @@ const Checkout = () => {
 							))
 						)}
 						{items.length > 0 && (
-							<OrderSummary
-								itemsTotal={itemsTotal}
-								deliveryFee={deliveryFee}
-								total={totalAmount}
-								onCancel={handleCancelOrder}
-								onConfirm={handleConfirmOrder}
-							/>
+							<>
+								<OrderSummary
+									itemsTotal={getTotalPrice()}
+									deliveryFee={deliveryFee}
+									total={getTotalPrice() + deliveryFee}
+								/>
+								<S.ButtonContainer>
+									<S.CancelButton type="button" onClick={handleCancelOrder}>
+										Cancelar
+									</S.CancelButton>
+									<S.ConfirmButton type="submit">
+										Confirmar Pedido
+									</S.ConfirmButton>
+								</S.ButtonContainer>
+							</>
 						)}
 					</S.Card>
 				</S.RightSection>

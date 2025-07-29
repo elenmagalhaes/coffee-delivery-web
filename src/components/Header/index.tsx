@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 import { Actions, Cart, CartBadge, Container, Location, LocationCity } from "./styles";
 
 const Header = () => {
-	const totalItems = useCartStore((state) =>
-		state.items.reduce((acc, item) => acc + item.quantity, 0)
-	);
+	const { getTotalItems } = useCartStore();
 
 	return (
 		<Container>
@@ -21,9 +19,9 @@ const Header = () => {
 				</Location>
 				<Cart as={Link} to="/checkout">
 					<ShoppingCart size={22} weight="fill" color={theme.colors.brand.yellowDark} />
-					{totalItems > 0 && (
+					{getTotalItems() > 0 && (
 						<CartBadge>
-							{totalItems}
+							{getTotalItems()}
 						</CartBadge>
 					)}
 				</Cart>

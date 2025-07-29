@@ -16,12 +16,18 @@ export interface CartItem {
 
 interface CartStore {
 	items: CartItem[]
+	deliveryFee: number
 	addToCart: (coffee: Coffee, quantity: number) => void
 	removeFromCart: (coffeeId: number) => void
+	updateQuantity: (coffeeId: number, quantity: number) => void
+	clearCart: () => void
+	getTotalPrice: () => number
+	getTotalItems: () => number
 }
 
-export const useCartStore = create<CartStore>((set) => ({
+export const useCartStore = create<CartStore>((set, get) => ({
 	items: [],
+	deliveryFee: 3.50,
 
 	addToCart: (coffee, quantity) => set((state) => {
 		const existingItem = state.items.find(item => item.coffee.id === coffee.id)
@@ -45,4 +51,22 @@ export const useCartStore = create<CartStore>((set) => ({
 	removeFromCart: (coffeeId) => set((state) => ({
 		items: state.items.filter(item => item.coffee.id !== coffeeId)
 	})),
+	updateQuantity: (coffeeId, quantity) => set((state) => {
+		return {
+			items: state.items.map(item =>
+				item.coffee.id === coffeeId
+					? { ...item, quantity }
+					: item
+			)
+		}
+	}),
+	clearCart: () => set({ items: [], deliveryFee: 3.50 }),
+	getTotalPrice: () => {
+		return get().items.reduce((total, item) => {
+			return (total + (item.coffee.price * item.quantity));
+		}, 0);
+	},
+	getTotalItems: () => {
+		return get().items.reduce((total, item) => total + item.quantity, 0);
+	}
 }))

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IStyle {
 	height?: string;
+	gap?: string;
 	borderRadius?: string;
 	colorType?: "base" | "brand";
 	color?: string;
@@ -62,6 +63,7 @@ export const Card = styled.div.withConfig({
 	background-color: ${({ theme }) => theme.colors.base.card};
 	height: ${({ height }) => height || "auto"};
 	border-radius: ${({ borderRadius }) => borderRadius || "0.5rem"};
+	gap: ${({ gap }) => gap || "0"};
 `;
 
 export const CardHeader = styled.div`
@@ -154,5 +156,47 @@ export const PaymentCard = styled.button.withConfig({
 
 	svg {
 		color: ${({ theme }) => theme.colors.brand.purple};
+	}
+`;
+
+export const ButtonContainer = styled.div`
+	margin-top: 1.5rem;
+	display: flex;
+	gap: 0.75rem;
+`;
+
+export const CancelButton = styled.button`
+	flex: 1;
+	height: 2.875rem;
+	border: none;
+	border-radius: 0.375rem;
+	background-color: ${({ theme }) => theme.colors.base.label};
+	color: ${({ theme }) => theme.colors.base.white};
+	font-size: ${({ theme }) => theme.typography.size.medium};
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&:hover {
+		background-color: ${({ theme }) => theme.colors.base.hover};
+	}
+`;
+
+export const ConfirmButton = styled.button`
+	flex: 1;
+	height: 2.875rem;
+	border: none;
+	border-radius: 0.375rem;
+	background-color: ${({ theme }) => theme.colors.brand.yellow};
+	color: ${({ theme }) => theme.colors.base.white};
+	font-size: ${({ theme }) => theme.typography.size.medium};
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&:hover {
+		background-color: ${({ theme }) => theme.colors.brand.yellowDark};
 	}
 `;

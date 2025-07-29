@@ -23,8 +23,6 @@ const Home = () => {
 	};
 
 	const handleTagClick = (name: string) => {
-		console.log(`Tag clicked: ${name}`);
-
 		if (activeFilter === name) {
 			setActiveFilter(null);
 			setCoffeesList(COFFEES_LIST);

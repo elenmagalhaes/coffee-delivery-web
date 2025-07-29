@@ -4,11 +4,9 @@ interface OrderSummaryProps {
 	itemsTotal: number;
 	deliveryFee: number;
 	total: number;
-	onCancel?: () => void;
-	onConfirm?: () => void;
 }
 
-const OrderSummary = ({ itemsTotal, deliveryFee, total, onCancel, onConfirm }: OrderSummaryProps) => {
+const OrderSummary = ({ itemsTotal, deliveryFee, total }: OrderSummaryProps) => {
 	return (
 		<S.Container>
 			<S.Row>
@@ -23,14 +21,6 @@ const OrderSummary = ({ itemsTotal, deliveryFee, total, onCancel, onConfirm }: O
 				<S.TotalLabel>Total</S.TotalLabel>
 				<S.TotalValue>R$ {total.toFixed(2).replace('.', ',')}</S.TotalValue>
 			</S.TotalRow>
-			<S.ButtonContainer>
-				<S.CancelButton onClick={onCancel}>
-					Cancelar
-				</S.CancelButton>
-				<S.ConfirmButton onClick={onConfirm}>
-					Confirmar Pedido
-				</S.ConfirmButton>
-			</S.ButtonContainer>
 		</S.Container>
 	);
 };
