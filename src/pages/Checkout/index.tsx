@@ -3,7 +3,7 @@ import { Flex } from "@/components/Flex";
 import OrderSummary from "@/components/OrderSummary";
 import RemoveButton from "@/components/RemoveButton";
 import Select from "@/components/Select";
-import { useCart, useAddress } from "@/hooks";
+import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -12,16 +12,33 @@ import * as S from "./styles";
 import type { Inputs } from "./types";
 
 const Checkout = () => {
-	const { items, removeFromCart, updateQuantity, clearCart, totalPrice, deliveryFee, total } = useCart();
-	const { setAddress } = useAddress();
+	const {
+		items,
+		removeFromCart,
+		updateQuantity,
+		clearCart,
+		totalPrice,
+		deliveryFee,
+		total,
+		setAddress,
+		paymentMethod,
+		setPaymentMethod
+	} = useApp();
 	const navigate = useNavigate();
 	const {
 		register,
 		handleSubmit,
+		watch
 	} = useForm<Inputs>()
 
+	// Watch form fields to validate address completion
+	const watchedFields = watch()
+
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		// Set address data
 		setAddress(data);
+
+		// Navigate to success page only after form submission
 		navigate('/checkout-filled');
 	};
 
@@ -36,6 +53,19 @@ const Checkout = () => {
 	const handleCancelOrder = () => {
 		clearCart();
 	};
+
+	// Check if form is valid for enabling confirm button
+	const isFormValid = () => {
+		const requiredFields = ['zipCode', 'street', 'streetNumber', 'neighborhood', 'city', 'state']
+		const isAddressValid = requiredFields.every(field =>
+			watchedFields[field as keyof Inputs]?.trim() !== '' &&
+			watchedFields[field as keyof Inputs] !== undefined
+		)
+		const hasItems = items.length > 0
+		const hasPaymentMethod = paymentMethod !== null
+
+		return isAddressValid && hasItems && hasPaymentMethod
+	}
 
 	return (
 		<S.PageContainer>
@@ -81,15 +111,27 @@ const Checkout = () => {
 							</S.CardHeader>
 
 							<S.PaymentSection>
-								<S.PaymentCard>
+								<S.PaymentCard
+									type="button"
+									selected={paymentMethod === 'credit'}
+									onClick={() => setPaymentMethod('credit')}
+								>
 									<CreditCard size={14} color={theme.colors.brand.purple} />
 									Cartão de Crédito
 								</S.PaymentCard>
-								<S.PaymentCard>
+								<S.PaymentCard
+									type="button"
+									selected={paymentMethod === 'debit'}
+									onClick={() => setPaymentMethod('debit')}
+								>
 									<Bank size={14} color={theme.colors.brand.purple} />
 									Cartão de Débito
 								</S.PaymentCard>
-								<S.PaymentCard>
+								<S.PaymentCard
+									type="button"
+									selected={paymentMethod === 'cash'}
+									onClick={() => setPaymentMethod('cash')}
+								>
 									<Money size={14} color={theme.colors.brand.purple} />
 									Dinheiro
 								</S.PaymentCard>
@@ -133,7 +175,10 @@ const Checkout = () => {
 									<S.CancelButton type="button" onClick={handleCancelOrder}>
 										Cancelar
 									</S.CancelButton>
-									<S.ConfirmButton type="submit">
+									<S.ConfirmButton
+										type="submit"
+										disabled={!isFormValid()}
+									>
 										Confirmar Pedido
 									</S.ConfirmButton>
 								</S.ButtonContainer>

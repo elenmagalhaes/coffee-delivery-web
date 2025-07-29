@@ -1,3 +1,5 @@
-import type { Address } from "@/store/address";
+import type { Address, PaymentMethod } from "@/hooks";
 
-export type Inputs = Address
+export interface Inputs extends Address {
+	paymentMethod?: PaymentMethod;
+}

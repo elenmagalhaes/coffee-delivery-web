@@ -1,4 +1,4 @@
-import type { Coffee } from "@/store/cart";
+import type { Coffee } from "@/hooks";
 import * as S from "./styles";
 
 interface CoffeeCardProps {

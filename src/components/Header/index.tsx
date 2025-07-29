@@ -1,11 +1,11 @@
-import { useCart } from "@/hooks";
+import { useApp } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { Actions, Cart, CartBadge, Container, Location, LocationCity } from "./styles";
 
 const Header = () => {
-	const { totalItems } = useCart();
+	const { totalItems } = useApp();
 
 	return (
 		<Container>
