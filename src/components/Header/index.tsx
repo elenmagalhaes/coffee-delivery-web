@@ -1,11 +1,11 @@
-import { useCartStore } from "@/store/cart";
+import { useCart } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { Actions, Cart, CartBadge, Container, Location, LocationCity } from "./styles";
 
 const Header = () => {
-	const { getTotalItems } = useCartStore();
+	const { totalItems } = useCart();
 
 	return (
 		<Container>
@@ -19,9 +19,9 @@ const Header = () => {
 				</Location>
 				<Cart as={Link} to="/checkout">
 					<ShoppingCart size={22} weight="fill" color={theme.colors.brand.yellowDark} />
-					{getTotalItems() > 0 && (
+					{totalItems > 0 && (
 						<CartBadge>
-							{getTotalItems()}
+							{totalItems}
 						</CartBadge>
 					)}
 				</Cart>

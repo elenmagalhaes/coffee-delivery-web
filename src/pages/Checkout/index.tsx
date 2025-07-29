@@ -3,8 +3,7 @@ import { Flex } from "@/components/Flex";
 import OrderSummary from "@/components/OrderSummary";
 import RemoveButton from "@/components/RemoveButton";
 import Select from "@/components/Select";
-import { useAddressStore } from "@/store/address";
-import { useCartStore } from "@/store/cart";
+import { useCart, useAddress } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -13,8 +12,8 @@ import * as S from "./styles";
 import type { Inputs } from "./types";
 
 const Checkout = () => {
-	const { items, removeFromCart, updateQuantity, clearCart, getTotalPrice, deliveryFee } = useCartStore();
-	const { setAddress } = useAddressStore();
+	const { items, removeFromCart, updateQuantity, clearCart, totalPrice, deliveryFee, total } = useCart();
+	const { setAddress } = useAddress();
 	const navigate = useNavigate();
 	const {
 		register,
@@ -126,9 +125,9 @@ const Checkout = () => {
 						{items.length > 0 && (
 							<>
 								<OrderSummary
-									itemsTotal={getTotalPrice()}
+									itemsTotal={totalPrice}
 									deliveryFee={deliveryFee}
-									total={getTotalPrice() + deliveryFee}
+									total={total}
 								/>
 								<S.ButtonContainer>
 									<S.CancelButton type="button" onClick={handleCancelOrder}>

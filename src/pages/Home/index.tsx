@@ -2,7 +2,7 @@ import CartButton from "@/components/CartButton";
 import Select from "@/components/Select";
 import Tag from "@/components/Tag";
 import { COFFEES_LIST, FILTER_OPTIONS } from "@/constants";
-import { useCartStore } from "@/store/cart";
+import { useCart } from "@/hooks";
 import { theme } from "@/theme/theme";
 import { currencyMasker } from "@/utils/masker";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
@@ -16,7 +16,7 @@ const Home = () => {
 	const [quantities, setQuantities] = useState(() =>
 		Object.fromEntries(COFFEES_LIST.map((coffee) => [coffee.id, 1]))
 	);
-	const addToCart = useCartStore(state => state.addToCart)
+	const { addToCart } = useCart();
 
 	const handleQuantityChange = (id: number, value: number) => {
 		setQuantities((prev) => ({ ...prev, [id]: value }));
