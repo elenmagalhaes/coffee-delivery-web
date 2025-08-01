@@ -16,7 +16,7 @@
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/elenmagalhaes/coffee-delivery-web?color=8047F8">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/elenmagalhaes/coffee-delivery-web?color=8047F8">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/elenmagalhaes/coffee-delivery-web?color=8047F8">
-  <img alt="Deploy Status" src="https://img.shields.io/badge/deploy-live-brightgreen?color=8047F8">
+  <img alt="Status do Projeto" src="https://img.shields.io/badge/status-development-yellow">
 </p>
 
 <p align="center">
